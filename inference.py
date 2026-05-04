@@ -35,12 +35,16 @@ class DeepLSTMModel(nn.Module):
 # ---- Load tokenizer and model ----
 
 def load_tokenizer(path="vocab.pkl"):
+    import pickle
     with open(path, "rb") as f:
         vocab = pickle.load(f)
+    
     class LightTokenizer:
         def __init__(self, v):
+            # Access dictionary keys using ['key'] instead of .property
             self.word_index = v["word_index"]
             self.index_word = v["index_word"]
+            
     return LightTokenizer(vocab)
 
 def load_model(path="lstm_model_best.pth", vocab_size=62550,
