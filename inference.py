@@ -34,15 +34,14 @@ class DeepLSTMModel(nn.Module):
 
 # ---- Load tokenizer and model ----
 
-def load_tokenizer(path="tokenizer.pkl"):
-    import pickle
+def load_tokenizer(path="vocab.pkl"):
     with open(path, "rb") as f:
-        tok = pickle.load(f)
+        vocab = pickle.load(f)
     class LightTokenizer:
-        def __init__(self, tok):
-            self.word_index = tok.word_index
-            self.index_word = tok.index_word
-    return LightTokenizer(tok)
+        def __init__(self, v):
+            self.word_index = v["word_index"]
+            self.index_word = v["index_word"]
+    return LightTokenizer(vocab)
 
 def load_model(path="lstm_model_best.pth", vocab_size=62550,
                emb_dim=256, hidden_dim=512, num_layers=2):

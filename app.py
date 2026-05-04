@@ -65,7 +65,7 @@ h1, h2, h3 {
 # ---- Load model + tokenizer (cached) ----
 @st.cache_resource
 def load_resources():
-    tokenizer = load_tokenizer("tokenizer.pkl")
+    tokenizer = load_tokenizer("vocab.pkl")
     lstm_model = load_model("lstm_model_best.pth")
     return tokenizer, lstm_model
 
