@@ -1,0 +1,4 @@
+streamlit
+torch
+tensorflow        
+scikit-learn
